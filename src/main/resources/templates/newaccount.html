@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create an account</title>
+      <div th:replace="fragments/header :: header-css"/>
+</head>
+
+<body>
+
+<div class="container">
+	
+    <form method="POST" modelAttribute="userForm" class="form-signin" th:action="@{/newaccount}">
+        <h2 class="form-signin-heading">Create your account</h2>
+        	<th:bind path="username">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <input type="text" path="username" class="form-control" name="username" placeholder="Username"
+                            autofocus="true" />
+              <th:errors path="username"></th:errors>
+            </div>
+            </th:bind>
+       		<th:bind path="email">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <input type="text" path="email" class="form-control" name="email" placeholder="Email" />
+                
+            </div>
+      	 </th:bind>
+      	 <th:bind path="password">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <input type="password" path="password" class="form-control" name="password" placeholder="Password" />
+               <th:errors path="password"></th:errors>
+            </div>
+         </th:bind>
+       <th:bind path="passwordConfirm">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <input type="password" path="passwordConfirm" class="form-control" name="passwordConfirm"
+                            placeholder="Confirm your password" />
+                <th:errors path="passwordConfirm"></th:errors>
+            </div>
+       
+		 </th:bind>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+    </form>
+
+</div>
+
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>

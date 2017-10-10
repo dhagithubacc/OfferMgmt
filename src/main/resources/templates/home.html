@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Welcome</title>
+      <div th:replace="fragments/header :: header-css"/>
+</head>
+
+<body>
+
+
+<div class="container">
+
+   <p><a th:href="@{/offers}">Show current offers.</a></p>
+	<p><a th:href="@{/createoffer}">Add a new offer.</a></p>
+       
+	<div sec:authorize="!isAuthenticated()">
+	<p><a th:href="@{/login}">Log in</a></p>
+	</div>
+	
+	<div sec:authorize="isAuthenticated()">
+	<p><a th:href="@{/logout}">Log out</a></p>
+	</div>
+	
+	<div sec:authorize="hasRole('ROLE_ADMIN')">
+	<p><a th:href="@{/admin}">Admin</a></p>
+	</div>
+</div>
+<!-- /container -->
+
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>

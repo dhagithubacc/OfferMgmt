@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+
+<div class="container">
+
+<table class="offers">
+
+<tr><td>Name</td><td>Email</td><td><td>Offer</td></td></tr>
+<tr th:each="offer : ${offers}">
+<td th:text="${offer.name}"></td>
+<td><td th:text="${offer.email}"></td></td>
+<td><td th:text="${offer.text}"></td></td>
+</tr>
+
+</table>
+
+</div>
+
+<!-- /.container -->
+<p></p>
+<div th:replace="fragments/footer :: footer"/>
+</body>
+
+</html>

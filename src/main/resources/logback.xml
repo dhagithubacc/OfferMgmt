@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<property name="USER_HOME" value="D:/Accounts/Telstra/TelstraOfferLogs" />
+	<property name="log.name" value="OfferMgmt" />
+	<appender name="FILE-ENGINE-ERROR" class="ch.qos.logback.core.FileAppender">
+		<file>${USER_HOME}/${log.name}.error</file>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE-ENGINE" class="ch.qos.logback.core.FileAppender">
+		<file>${USER_HOME}/${log.name}.log</file>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{35} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="com.caveofprogramming.spring.web.controller" level="debug" additivity="true">
+		<appender-ref ref="FILE-ENGINE" />
+	</logger>
+
+	<root level="error">
+		<appender-ref ref="FILE-ENGINE-ERROR" />
+	</root>
+
+</configuration>

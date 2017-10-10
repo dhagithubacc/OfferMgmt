@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Account Created</title>
+      <div th:replace="fragments/header :: header-css"/>
+</head>
+
+<body>
+
+<div class="container">
+
+     
+    <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+        <form th:action="@{/logout}" method="post">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <input type="submit" value="Sign Out"/>
+        </form>
+
+</div>
+<!-- /container -->
+
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>
